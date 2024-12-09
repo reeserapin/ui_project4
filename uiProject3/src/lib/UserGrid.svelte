@@ -82,7 +82,7 @@ $: filteredUsers = users.filter(user =>
 
 <style>
 .search-container {
-  /* margin: 16px; */
+  margin: 16px;
   text-align: center;
 }
 

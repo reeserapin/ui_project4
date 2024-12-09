@@ -3,6 +3,12 @@
     export let skillsHave = [];
     export let skillsLearn = [];
     export let imageUrl = ''; // Add a prop for the image URL
+  
+    let isRequestPending = false; // State to track the button status
+  
+    function handleRequestSwap() {
+      isRequestPending = true; // Change the button text to "Pending"
+    }
   </script>
   
   <div class="user-container">
@@ -27,6 +33,11 @@
           {/each}
         </ul>
       </div>
+      <div class="request-container">
+        <button class="request-button" on:click={handleRequestSwap} disabled={isRequestPending}>
+          {isRequestPending ? "Pending" : "Request Swap"}
+        </button>
+      </div>
     </div>
   </div>
   
@@ -40,6 +51,7 @@
       margin: 8px;
       background-color: #f9f9f9;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
     }
   
     .image-box {
@@ -47,9 +59,9 @@
     }
   
     .image-box img {
-      width: 100px; /* Adjust the width as needed */
-      height: 100px; /* Maintain aspect ratio or adjust as needed */
-      border-radius: 50%; /* Makes the image circular */
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       object-fit: cover;
     }
   
@@ -58,11 +70,44 @@
     }
   
     .skills {
-      margin-top: 8px;
+      margin-top: 16px;
     }
   
     ul {
-      padding-left: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .request-container {
+      margin-top: 16px;
+      text-align: center; /* Centers the button */
+    }
+  
+    .request-button {
+      background-color: #3fb5d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    .request-button:hover {
+      background-color: #3f5bbb;
+    }
+  
+    .request-button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
     }
   </style>
   

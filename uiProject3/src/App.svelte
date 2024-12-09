@@ -1,14 +1,14 @@
 <script>
   import UserGrid from './lib/UserGrid.svelte';
   import Profile from './lib/Profile.svelte';
+  import PendingRequests from './lib/PendingRequests.svelte';
 </script>
 
 <main>
-  <!-- <h1>SwapSkills</h1> -->
-  <!-- Adding an image -->
   <img src="skillswap.png" alt="Skill Swap" />
   <Profile />
   <UserGrid />
+  <PendingRequests />
 </main>
 
 <style>
