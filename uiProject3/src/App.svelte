@@ -4,7 +4,9 @@
 </script>
 
 <main>
-  <h1>SwapSkills</h1>
+  <!-- <h1>SwapSkills</h1> -->
+  <!-- Adding an image -->
+  <img src="skillswap.png" alt="Skill Swap" />
   <Profile />
   <UserGrid />
 </main>
@@ -24,5 +26,13 @@
     font-family: Arial, sans-serif;
     margin-top: 50px;
     padding: 16px;
+  }
+
+  img {
+    width: 200px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 20px;
   }
 </style>

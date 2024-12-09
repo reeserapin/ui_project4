@@ -4,21 +4,51 @@
   let users = [
     {
       name: "Alice Johnson",
-      skillsHave: ["JavaScript", "Svelte", "CSS"],
-      skillsLearn: ["Python", "Machine Learning"],
+      skillsHave: ["JavaScript", "Svelte", "CSS", "Web Development"],
+      skillsLearn: ["Video Editing", "Digital Art", "Photography"],
       imageUrl: '/headshot1.jpg'
     },
     {
-      name: "Dave Jackson",
-      skillsHave: ["Python", "Data Analysis"],
-      skillsLearn: ["React", "Web Design"],
+      name: "David Jackson",
+      skillsHave: ["Automotive Repair", "Marketing"],
+      skillsLearn: ["Personal Fitness Training", "Cooking/Baking", "Legal Document Preparation"],
       imageUrl: '/headshot2.jpg'
     },
     {
-      name: "Deepika Patel",
-      skillsHave: ["Graphic Design", "Illustration"],
-      skillsLearn: ["UI/UX Design", "3D Modeling"],
+      name: "Deepshikha Jaya",
+      skillsHave: ["Plumbing", "Basic Home Repairs", "Carpentry"],
+      skillsLearn: ["Electrical Work", "Bookkeeping", "Copywriting"],
       imageUrl: '/headshot3.jpg'
+    },
+    {
+      name: "Ho Yin",
+      skillsHave: ["Welding", "Wood Carving", "Juggling"],
+      skillsLearn: ["Career Coaching", "Event Planning", "Grant Writing"],
+      imageUrl: '/headshot4.png'
+    },
+    {
+      name: "Mike Naber",
+      skillsHave: ["Personal Fitness Training", "Gardening"],
+      skillsLearn: ["Childcare/Babysitting", "Meal Prep", "Sewing"],
+      imageUrl: '/headshot5.jpg'
+    },
+    {
+      name: "Rehema Nia",
+      skillsHave: ["Pet Care and Training", "Hairdressing/Grooming"],
+      skillsLearn: ["Voice Acting/Narration", "Survival Skills"],
+      imageUrl: '/headshot6.jpg'
+    },
+    {
+      name: "Jensine Isaksen",
+      skillsHave: ["Bartering/Negotiation", "Musical Instrument Harp"],
+      skillsLearn: ["Drone Operation", "Ethical Hacking"],
+      imageUrl: '/headshot7.jpg'
+    },
+    {
+      name: "Monique Carothers",
+      skillsHave: ["Underwater Basket Weaving", "Ball Clay Pottery", "French"],
+      skillsLearn: ["Oil Painting", "Sculpting"],
+      imageUrl: '/headshot8.png'
     }
   ];
   let searchTerm = ''; // For capturing the search input
@@ -52,7 +82,7 @@ $: filteredUsers = users.filter(user =>
 
 <style>
 .search-container {
-  margin: 16px;
+  /* margin: 16px; */
   text-align: center;
 }
 

@@ -21,7 +21,7 @@
   
   <style>
     .search-bar {
-      position: relative;
+      position: fixed;
       padding: 20px;
     }
     input {

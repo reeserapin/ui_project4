@@ -1,6 +1,6 @@
 <script>
     let pfpUrl = "./CSGIRLY.webp"; // Placeholder image
-    let name = "Cynthia Smith";
+    let name = "/cynthiasmith.png";
     let username = "cynthia_smith"; // New username variable
     let skillsHave = ["HTML", "CSS"];
     let skillsLearn = ["JavaScript", "Svelte"];
@@ -55,12 +55,12 @@
   
     {#if isProfileOpen}
       <div class="profile-box visible">
-        <h2>{name}</h2>
+        <img src={name} alt={name} />
         <p><strong>Username:</strong> {username}</p> <!-- Displaying the username -->
   
         <div class="skills-section">
           <div class="skills-list">
-            <h3>Skills Have</h3>
+            <h3>Skills I Have:</h3>
             <ul>
               {#each skillsHave as skill, index}
                 <li>
@@ -79,7 +79,7 @@
           </div>
   
           <div class="skills-list">
-            <h3>Skills to Learn</h3>
+            <h3>Skills to Learn:</h3>
             <ul>
               {#each skillsLearn as skill, index}
                 <li>
@@ -114,14 +114,14 @@
       height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #0077cc;
+      border: 2px solid #5271ff;
       cursor: pointer;
     }
   
     .profile-box {
       position: absolute;
       top: 100px;
-      right: 0;
+      right: 20px;
       width: 300px;
       border: 1px solid #ddd;
       border-radius: 8px;
@@ -131,6 +131,12 @@
       opacity: 0;
       transform: translateX(10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .profile-box img {
+      width: 260px; /* Adjust the size as needed */
+      object-fit: cover; /* Ensures the image fits nicely within the bounds */
+      margin-top: 16px; /* Add some spacing below the image */
     }
   
     .profile-box.visible {
@@ -164,7 +170,7 @@
     }
   
     button {
-      background-color: #f44336;
+      background-color: #ffbd59;
       color: white;
       border: none;
       border-radius: 4px;
