@@ -1,43 +1,36 @@
 <script>
-    let showRequests = false; // State to track visibility of the requests box
+    let showRequests = false;
   
-    // Sample pending requests (can be dynamically loaded from a server or store)
     let pendingRequests = [
-      { id: 1, requestor: 'Arline Wallace', status: 'Pending' },
-      { id: 2, requestor: 'Carly Huynh', status: 'Pending' },
-      { id: 3, requestor: 'Santo Obrien', status: 'Pending' },
+      { id: 1, requestor: 'Waldo Warner', skillToSwap: 'HTML', skillOffered: 'JavaScript', status: 'Pending' },
+      { id: 2, requestor: 'Magdalena Guerra', skillToSwap: 'CSS', skillOffered: 'React', status: 'Pending' },
+      { id: 3, requestor: 'Amos Wolfe', skillToSwap: 'JavaScript', skillOffered: 'Node.js', status: 'Pending' },
     ];
   
-    // Toggle the visibility of the request list
     function toggleRequests() {
       showRequests = !showRequests;
     }
   
-    // Approve request logic
     function approveRequest(id) {
-      const request = pendingRequests.find(req => req.id === id);
-      if (request) {
-        request.status = 'Approved';
-      }
-    }
-  
-    // Reject request logic
-    function rejectRequest(id) {
       const requestIndex = pendingRequests.findIndex(req => req.id === id);
       if (requestIndex !== -1) {
-        pendingRequests.splice(requestIndex, 1);
+        pendingRequests[requestIndex].status = 'Accepted';
+        pendingRequests = [...pendingRequests];
       }
     }
-  </script>
   
-  <!-- Button to toggle the visibility of pending requests -->
-  <div class="requests-toggle">
+    function rejectRequest(id) {
+      pendingRequests = pendingRequests.filter(req => req.id !== id);
+    }
+</script>
+  
+<div class="requests-toggle">
     <button on:click={toggleRequests} aria-label={showRequests ? 'Hide pending requests' : 'Show pending requests'}>
       {showRequests ? 'Hide Pending Requests' : 'Show Pending Requests'}
     </button>
-  </div>
+</div>
   
-  {#if showRequests}
+{#if showRequests}
     <div class="requests-box visible">
       <h3>Pending Requests</h3>
       {#if pendingRequests.length === 0}
@@ -47,13 +40,13 @@
           {#each pendingRequests as request (request.id)}
             <li class="request-item">
               <div class="request-details">
-                <p><strong>{request.requestor}</strong> is requesting a skill swap.</p>
+                <p><strong>{request.requestor}</strong> wants to swap <strong>{request.skillToSwap}</strong> for <strong>{request.skillOffered}</strong>.</p>
                 <span class="request-status">{request.status}</span>
               </div>
               {#if request.status === 'Pending'}
                 <div class="request-actions">
-                  <button on:click={() => approveRequest(request.id)} aria-label={`Approve request from ${request.requestor}`}>Approve</button>
-                  <button on:click={() => rejectRequest(request.id)} aria-label={`Reject request from ${request.requestor}`}>Reject</button>
+                  <button class="accept-btn" on:click={() => approveRequest(request.id)} aria-label={`Accept request from ${request.requestor}`}>Accept</button>
+                  <button class="reject-btn" on:click={() => rejectRequest(request.id)} aria-label={`Reject request from ${request.requestor}`}>Reject</button>
                 </div>
               {/if}
             </li>
@@ -61,9 +54,9 @@
         </ul>
       {/if}
     </div>
-  {/if}
+{/if}
   
-  <style>
+<style>
     .requests-toggle {
       position: fixed;
       bottom: 20px;
@@ -144,8 +137,8 @@
       gap: 8px;
     }
   
-    .request-actions button {
-      background-color: #ffbd59;
+    .accept-btn {
+      background-color: #4caf50;
       color: white;
       border: none;
       border-radius: 4px;
@@ -155,8 +148,23 @@
       transition: background-color 0.3s ease;
     }
   
-    .request-actions button:hover {
-      background-color: #d32f2f;
+    .accept-btn:hover {
+      background-color: #45a049;
+    }
+  
+    .reject-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+  
+    .reject-btn:hover {
+      background-color: #e53935;
     }
   
     .request-actions button:disabled {
@@ -173,10 +181,6 @@
       color: #00b5b8;
     }
   
-    .request-actions button:disabled {
-      background-color: #ddd;
-    }
-  
     @media (max-width: 600px) {
       .requests-box {
         right: 10px;
@@ -184,5 +188,4 @@
         width: 90%;
       }
     }
-  </style>
-  
+</style>
